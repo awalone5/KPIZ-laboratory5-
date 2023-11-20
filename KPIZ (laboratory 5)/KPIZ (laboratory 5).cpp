@@ -67,55 +67,44 @@ int main()
 	showData(notes);
 	bool isExit = false;
 	cout << "How to use this program:" << endl << "To see all data enter: 1" << endl << "To find by name enter: 2" << endl << "To find by telephone number enter: 3" << endl << "To find by date of birthd enter: 4" << endl << "To edit note enter: 5" << endl << "To delete note enter: 6" << endl << "To make new note enter: 7" << endl << "If you want to exit enter: 8" << endl;
-	while (!isExit)
+	do
 	{
-		string choose;
-		getline(cin, choose);
-		if (choose._Equal("1"))
+		int choose;
+		string buffer;
+		getline(cin, buffer);
+		choose = stoi(buffer);
+
+		switch (choose)
 		{
+		case 1:
 			showData(notes);
-			choose.clear();
-		}
-		else if (choose._Equal("2"))
-		{
+			break;
+		case 2:
 			findByName(notes);
-			choose.clear();
-		}
-		else if (choose._Equal("3"))
-		{
+			break;
+		case 3:
 			findByTel(notes);
-			choose.clear();
-		}
-		else if (choose._Equal("4"))
-		{
+			break;
+		case 4:
 			findByDate(notes);
-			choose.clear();
-		}
-		else if (choose._Equal("5"))
-		{
+			break;
+		case 5:
 			edit(notes, targetFile);
-			choose.clear();
-		}
-		else if (choose._Equal("6"))
-		{
+			break;
+		case 6:
 			deleteNote(notes, targetFile);
-			choose.clear();
-		}
-		else if (choose._Equal("7"))
-		{
+			break;
+		case 7:
 			addNewNote(notes, targetFile);
-			choose.clear();
-		}
-		else if (choose._Equal("8"))
-		{
-			choose.clear();
+			break;
+		case 8:
 			isExit = true;
-		}
-		else
-		{
+			break;
+		default:
 			cerr << "Err. Unknown choose" << endl;
+			break;
 		}
-	}
+	} while (!isExit);
 	inputFile.close();
 }
 
